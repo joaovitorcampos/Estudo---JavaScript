@@ -1,0 +1,13 @@
+<html>
+    <script>
+        let value = 1234.59;
+        console.log(value.toFixed(1));//Arredonda de 5 pra cima e quantidade que quiser depois da virgula
+        console.log(Math.ceil(value));//(Arredonda inteiro pra cima)
+        console.log(Math.floor(value));//Arredonda inteiro pra baixo
+        console.log(Math.round(value));//Como o floor
+        console.log(new Intl.NumberFormat("pt-BR", {//Converte o valor para real
+            style: "currency",
+            currency: "BRL",
+        }). format(value));
+    </script>
+</html>
