@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1- Faça um programa que exiba 3 números na tela.
+        //2- Faça um programa que leia 3 números e exiba-os na tela.
+        //3- Faça um programa que leia 3 números, some-os e exiba a média entre eles.
+        //4- Faça um programa que leia do usuário uma temperatura em Fahrenheit, converta-a para graus Celsius e escreva o novo valor na tela. A fórmula de conversão de Fahrenheit (F) para Celsius é C = ( ( F - 32 ) * 5 ) / 9. Exemplo: 100 Fahrenheit = 37,77 Celsius.
+        //5- Faça um programa que leia 2 números, some-os e exiba uma mensagem com o resultado apenas se o resultado for maior que 100.
+        //6- Para um jogo, precisamos saber se um personagem morreu ou não depois de sofrer um ataque. Faça uma função que receba 2 parâmetros, 'dano' e 'saude'. A função deve retornar '1' se o dano for matar o personagem (ou seja, deixar sua saúde menor ou igual a zero) e '0' caso contrário.
+        //7- Precisamos limitar as posições em que um inimigo pode andar na tela. A menor posição possível é 0 e a maior, 100: qualquer valor maior que 100 ou menor que 0 sairia fora da tela. Precisamos de uma função LimitaPosicao que recebe uma POSICAO que pode ter qualquer valor positivo ou negativo, verifica se ela é válida ou não e retorna sempre um valor corrigido entre 0 e 100.
+        //8- Escreva um programa que calcule e mostre a tabuada (até 10x) de um número qualquer, digitado pelo usuário.
+        //9- Faça um programa que leia um vetor numérico de 10 posições. Depois, ordene o vetor em ordem crescente e apresente os elementos ordenados.
+        var q = Number(prompt("Escolha uma questão: "));
+        let num1, num2, num3;
+        switch(q) {
+            case 1:
+                console.log(1);
+                console.log(2);
+                console.log(3);
+            break;
+            case 2: 
+                num1 = Number(prompt("Digite o primeiro numero:"));
+                num2 = Number(prompt("Digite o segundo numero:"));
+                num3 = Number(prompt("Digite o terceiro numero:"));
+                console.log(num1);
+                console.log(num2);
+                console.log(num3);
+            break;
+            case 3:
+                num1 = Number(prompt("Digite o primeiro numero:"));
+                num2 = Number(prompt("Digite o segundo numero:"));
+                num3 = Number(prompt("Digite o terceiro numero:"));
+                console.log(`A média é: ${(num1 + num2 + num3)/3}`);
+            break;
+            case 4:
+                let fahrenheit = Number(prompt("Digite a temperatura em fahrenheit:"));
+                console.log(`A temperatura em celsius é: ${ ( ( fahrenheit - 32 ) * 5 ) / 9}`);
+            break;
+            case 5: 
+                num1 = Number(prompt("Digite o primeiro numero: "));
+                num2 = Number(prompt("Digite o segundo numero: "));
+                if (num1+num2>100) {
+                    console.log(`${num1+num2} é maior que 100`);
+                }
+            break;
+            case 6: 
+                function gameover(dano, saude) {
+                    if (dano >= saude) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+                let dano = Number(prompt("Digite o dano tomado: "));
+                let saude = Number(prompt("Digite a saúde: "))
+                let resultado = gameover(dano, saude);
+                if (resultado == 1) {
+                    console.log(`Game Over`);
+                } else {
+                    console.log(`Você viveu`);
+                }
+            break;
+            case 7: 
+                function LimitaPosicao (posicao) {
+                    if (posicao < 0 || posicao > 100) {
+                        console.log("Posição invalida, nova posição: ");
+                        return Math.floor(Math.random() * 101);
+                    } else {
+                        return posicao;
+                    }
+                }
+                num1 = Number(prompt(`Digite a posição: `));
+                num2 = LimitaPosicao(num1);
+                console.log(num2);
+            break;
+            case 8: 
+                num1 = Number(prompt("Digite o primeiro numero: "));
+                for (i=0; i<=10; i++) {
+                    console.log(`${num1} x ${i} = ${num1*i}`);
+                }
+            break;
+            case 9: 
+            num1 = [];
+            for (let i=0; i<5; i++) {
+                num1[i] = Number(prompt(`Digite a posição: `));
+            }
+            num1.sort(function(a, b) {
+                return a - b;
+            });
+            console.log(num1);
+            break;
+        }
+    </script>
+</body>
+</html> 
