@@ -1,0 +1,15 @@
+<html>
+    <script>
+        const people = {
+            id:1,
+            name: "João",
+            bornDate: new Date(2001, 3, 25),
+            adress: {
+                city: "Belo Horizonte",
+            },
+        }
+        console.log(JSON.stringify(people));
+        const json = `{"id":1,"name":"João","bornDate":"2001-04-25T03:00:00.000Z","adress":{"city":"Belo Horizonte"}}`;
+        console.log(JSON.parse(json));
+    </script>
+</html>
