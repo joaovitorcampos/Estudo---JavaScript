@@ -1,0 +1,28 @@
+<html>
+    <script>
+        const numbers = [10,18,1,15];
+        const gt10 = function(item) {
+            return item> 10;
+        }
+        let res = numbers.filter(gt10);
+        //Também pode ser usado um arrow function, ficando algo como -> let res = numbers.filter((n) => n > 10);
+        console.log(res);
+        console.log(numbers);
+        const people = [
+            {
+                name: "Felipe",
+                age: 40
+            },
+            {
+                name: "Paulo",
+                age: 15
+            },
+            {
+                name: "João",
+                age: 23
+            },
+        ];
+        const m = people.filter((p) => p.age >= 18);//Filtrando dentro de objetos 
+        console.log(m)
+    </script>
+</html>
