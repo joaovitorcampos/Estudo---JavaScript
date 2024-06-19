@@ -1,0 +1,26 @@
+<html>
+    <script>
+        const numbers = [1, 2, 3, 4, 5];
+        const double = numbers.map((n) => n*2);//Manipula completamente o array
+        console.log(double);
+        const fahreinheit = [0, 32, 45, 46, 47, 91, 93,  121];
+        const celcius = fahreinheit.map((t) => Math.round(((t-32)*5)/9));3
+        console.log(celcius);
+        const people = [
+            {
+                name: "felipe",
+                age: 40
+            },
+            {
+                name: "pAulo",
+                age: 15
+            },
+            {
+                name: "João",
+                age: 23
+            },
+        ];
+        const peopleNormalized = people.map((p) => p.name.toUpperCase());
+        console.log(peopleNormalized);
+    </script>
+</html>
