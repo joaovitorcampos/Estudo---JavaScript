@@ -1,0 +1,67 @@
+<html>
+    <script>
+        /*  Filter: Dada uma lista de números, filtre apenas os números ímpares.
+            Filter: Dada uma lista de strings, filtre apenas as strings que têm mais de 3 caracteres.
+            Filter: Dada uma lista de números, filtre apenas os números positivos.
+            Map: Dada uma lista de números, crie uma nova lista onde cada número seja multiplicado por 10.
+            Map: Dada uma lista de strings, crie uma nova lista com todas as strings em maiúsculas.
+            Map: Dada uma lista de números, crie uma nova lista com o quadrado de cada número.
+            Reduce: Dada uma lista de números, calcule a soma de todos os números.
+            Reduce: Dada uma lista de números, calcule o produto de todos os números.
+            Reduce: Dada uma lista de strings, concatene todas as strings em uma única string.
+            Combinação: Dada uma lista de números, use filter para remover os números negativos, map para elevar ao quadrado os números restantes e reduce para somar todos os quadrados.
+        */
+        var questao = Number(prompt("Selecione a questão: "));
+        switch (questao) {
+            case 1: 
+                let ArrayImpares = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(ArrayImpares.filter((n) => n%2===1));//Filtra elementos impares 
+            break;
+            case 2: 
+                let ArrayStrings = ["João", "no", "JavaScript", "OK"];
+                console.log(ArrayStrings.filter((n) => n.length >= 3));//Filtra apenas elementos com mais de 3 caracteres
+            break;
+            case 3:
+                let ArrayPositivos = [-5, 5, -4, 4, -3, 3, -2, 2, -1, 1];
+                console.log(ArrayPositivos.filter((n) => n>0));//Filtra apenas numeros positivos
+            break;
+            case 4:
+                let ArrayDobrado = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(ArrayDobrado.map((n) => n*2));//Dobra todos os elementos
+            break;
+            case 5: 
+                let ArrayMaiusculo = ["João", "no", "JavaScript", "ok"];
+                console.log(ArrayMaiusculo.map((n) => n.toUpperCase()));//Deixa todos os elementos em maiusculo
+            break;
+            case 6: 
+                let ArrayQuadrado = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(ArrayQuadrado.map((n) => n*n));//Faz o quadrado de todos os elementos
+            break;
+            case 7:
+                let ArraySoma = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(ArraySoma.reduce((total, valor) => total + valor, 0));//Soma todos os elementos
+            break;
+            case 8: 
+                let ArrayProduto = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(ArrayProduto.reduce((total, valor) => total * valor, 1));//Faz o produto dos elementos
+            break;
+            case 9:
+                let ArrayConcatenado = ["João", " no", " JavaScript", " ok"];
+                console.log(ArrayConcatenado.reduce((total, valor) => total + valor, ""));//Concatena os elementos
+            break;
+            case 10:
+            let ArrayCombinado = [-5, 5, -4, 4, -3, 3, -2, 2, -1, 1];
+            console.log(ArrayCombinado
+            .reduce((total, valor) => {//Remove os numeros negativos
+                if (valor>0) {
+                    total.push(valor);
+                }
+                return total;
+            }, []).reduce((total, valor) => {//Faz o quadrado dos elementos
+                total.push(valor*valor);
+                return total;
+            }, []).reduce((total, valor) => total + valor, 0));//Soma o quadrado dos elementos
+            break;
+        }
+    </script>
+</html>
