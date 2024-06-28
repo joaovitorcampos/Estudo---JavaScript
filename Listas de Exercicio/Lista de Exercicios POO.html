@@ -1,0 +1,456 @@
+<html>
+<script>
+    /*
+        1- Classe Pessoa:
+        Crie uma classe Pessoa com atributos nome, idade e sexo.
+        Adicione um método descrever que imprime uma descrição da pessoa.
+        
+        2- Classe Carro:
+        Crie uma classe Carro com atributos marca, modelo e ano.
+        Adicione um método descrever que imprime as características do carro.
+        Adicione um método idade que calcula quantos anos o carro tem.
+        
+        3- Classe ContaBancaria:
+        Crie uma classe ContaBancaria com atributos saldo e numero.
+        Adicione métodos para depositar e sacar dinheiro da conta.
+        Adicione um método mostrarSaldo que imprime o saldo da conta.
+        
+        4- Herança com ContaCorrente e ContaPoupanca:
+        Crie duas classes: ContaCorrente e ContaPoupanca que herdam de ContaBancaria.
+        ContaCorrente deve ter um atributo limite e ContaPoupanca deve ter um atributo jurosMensais.
+        Adicione métodos apropriados para estas classes.
+        
+        5- Classe Aluno:
+        Crie uma classe Aluno com atributos nome, idade e notas (um array de notas).
+        Adicione métodos para adicionarNota, calcularMedia e imprimirBoletim.
+        
+        6- Classe Livro:
+        Crie uma classe Livro com atributos titulo, autor, e ano.
+        Adicione um método descrever que imprime uma descrição do livro.
+        Crie uma classe Biblioteca que tem um array de livros e métodos para adicionar livros e listar todos os livros.
+        
+        7- Classe Produto e Pedido:
+        Crie uma classe Produto com atributos nome, preco e quantidade.
+        Crie uma classe Pedido com um array de produtos.
+        Adicione métodos para adicionarProduto, removerProduto e calcularTotal.
+        
+        8- Classe Funcionario e Empresa:
+        Crie uma classe Funcionario com atributos nome, cargo, e salario.
+        Crie uma classe Empresa com um array de funcionários.
+        Adicione métodos para adicionarFuncionario, removerFuncionario, listarFuncionarios e calcularFolhaSalarial.
+        
+        9- Classe Animal e Subclasses:
+        Crie uma classe Animal com atributos nome e idade.
+        Crie subclasses Cachorro, Gato e Passaro que herdam de Animal e adicionam métodos específicos para cada um.
+        Adicione métodos emitirSom em cada subclasse.
+        
+        10- Classe Calculadora:
+        Crie uma classe Calculadora com métodos estáticos para somar, subtrair, multiplicar, e dividir.
+        Adicione tratamento de erros para divisão por zero.
+    */
+    class Pessoa {
+        constructor(nome, idade, sexo) {
+            this.nome = nome;
+            this.idade = idade;
+            this.sexo = sexo;
+        }
+        descrever() {
+            return `${this.nome} tem ${this.idade} anos e é do sexo ${sexo}.`;
+        }
+    }
+    class Carro {
+        constructor(marca, modelo, ano) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.ano = ano;
+            this.idade = new Date().getFullYear() - ano;
+        }
+        descrever() {
+            return `O carro ${this.modelo} é da marca ${this.marca} e do ano ${this.ano}. Sua idade é ${this.idade} anos`;
+        }
+    }
+    class ContaBancaria {
+        constructor(saldo, numero) {
+            this.saldo = saldo;
+            this.numero = numero;
+        }
+        depositar() {
+            this.saldo += Number(prompt("Digite o valor que vai ser depositado: "));
+        }
+        sacar() {
+            this.saldo -= Number(prompt("Digite o valor que vai ser sacado: "));
+        }
+        descrever() {
+            return `Seu saldo é: ${this.saldo}`;
+        }
+    }
+    class ContaCorrente extends ContaBancaria {
+        constructor(saldo, numero, limite) {
+            super(saldo, numero);
+            this.limite = limite;
+        }
+        descrever() {
+            return `Seu saldo é: ${this.saldo} e seu limite é ${this.limite}`;
+        }
+    }
+    class ContaPoupanca extends ContaBancaria {
+        constructor(saldo, numero, juros) {
+            super(saldo, numero);
+            this.juros = juros;
+        }
+        descrever() {
+            return `Seu saldo é: ${this.saldo} e seu juros é ${this.juros}`;
+        }
+    }
+    class Aluno {
+        constructor(nome, idade, notas) {
+            this.nome = nome;
+            this.idade = idade;
+            this.notas = notas || [];
+        }
+        adicionarNota(nota) {
+            this.notas.push(nota);
+        }
+        calcularMedia() {
+            let soma = 0;
+            for (let calculamedia of this.notas) {
+                soma += calculamedia;
+            }
+            console.log(`A média é: ${soma / this.notas.length}`)
+        }
+        imprimirBoletim() {
+            console.log(`As notas são: ${this.notas}`);
+        }
+    }
+    class Livro {
+        constructor(titulo, autor, ano) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.ano = ano;
+        }
+        descrever() {
+            console.log(`O livro ${this.titulo} foi escrito por ${this.autor} no ano de ${this.ano}`);
+        }
+    }
+    class Biblioteca {
+        constructor() {
+            this.livros = [];
+        }
+        adicionarLivro(livro) {
+            this.livros.push(livro);
+        }
+        listarLivros() {
+            this.livros.forEach((livro, index) => {
+                console.log(`${index + 1}. ${livro.descrever()}`);
+            });
+        }
+    }
+    class Produto {
+        constructor(nome, preco, quantidade) {
+            this.nome = nome;
+            this.preco = preco;
+            this.quantidade = quantidade;
+        }
+    }
+    class Pedido {
+        constructor() {
+            this.produtos = [];
+        }
+        adicionarProduto(produto) {
+            this.produtos.push(produto);
+        }
+        removerProduto() {
+            this.produtos.pop();
+        }
+        calcularTotal() {
+            let total = 0;
+            this.produtos.forEach((produto, index) => {
+                total += produto.preco * produto.quantidade;
+            });
+            console.log(total);
+        }
+    }
+    class Funcionario {
+        constructor(nome, cargo, salario) {
+            this.nome = nome;
+            this.cargo = cargo;
+            this.salario = salario;
+        }
+    }
+    class Empresa {
+        constructor() {
+            this.funcionarios = [];
+        }
+        adicionarFuncionario(funcionario) {
+            this.funcionarios.push(funcionario);
+        }
+        removerFuncionario() {
+            this.funcionarios.pop();
+        }
+        listarFuncionarios() {
+            this.funcionarios.forEach((funcionario, index) => {
+                console.log(`${index + 1}. ${funcionario.nome} ${funcionario.cargo} ${funcionario.salario}`);
+            });
+        }
+        calcularFolhaSalarial() {
+            let total = 0;
+            this.funcionarios.forEach((funcionario, index) => {
+                total += funcionario.salario;
+            })
+            console.log(`O salário total a pagar é: ${total}`);
+        }
+    }
+    class Animal {
+        constructor(nome, idade) {
+            this.nome = nome;
+            this.idade = idade;
+        }
+    }
+    class Cachorro extends Animal {
+        constructor(nome, idade) {
+            super(nome, idade);
+        }
+        emitirSom() {
+            console.log("Au");
+        }
+    }
+    class Gato extends Animal {
+        constructor(nome, idade) {
+            super(nome, idade);
+        }
+        emitirSom() {
+            console.log("Miau");
+        }
+    }
+    class Passaro extends Animal {
+        constructor(nome, idade) {
+            super(nome, idade);
+        }
+        emitirSom() {
+            console.log("Piu");
+        }
+    }
+    class Calculadora {
+        constructor(num1, num2) {
+            this.num1 = num1;
+            this.num2 = num2;
+        }
+        somar() {
+            console.log(this.num1 + this.num2);
+        }
+        subtrair() {
+            console.log(this.num1 - this.num2);
+        }
+        multiplicar() {
+            console.log(this.num1 * this.num2);
+        }
+        dividir() {
+            this.num2 != 0 ? console.log(this.num1 / this.num2) : console.log("Não é possível dividir por zero");
+        }
+    }
+    var questao = Number(prompt("Digite a questão: "));
+    switch (questao) {
+        case 1:
+            let nome = prompt("Digite seu nome: ");
+            let idade = Number(prompt("Digite sua idade: "));
+            let sexo = prompt("Digite seu sexo: ");
+            const pessoa = new Pessoa(nome, idade, sexo);
+            console.log(pessoa.descrever());
+            break;
+        case 2:
+            let marca = prompt("Digite a marca do carro: ");
+            let modelo = prompt("Digite o modelo do carro: ");
+            let ano = Number(prompt("Digite o ano do carro: "));
+            const carro = new Carro(marca, modelo, ano);
+            console.log(carro.descrever());
+            break;
+        case 3:
+            let saldo = Number(prompt("Digite o saldo: "));
+            let numero = Number(prompt("Digite o numero da conta: "));
+            const contabancaria = new ContaBancaria(saldo, numero);
+            contabancaria.depositar();
+            contabancaria.sacar();
+            console.log(contabancaria.descrever());
+            break;
+        case 4:
+            let tipoConta = Number(prompt("Digite 1 para conta corrente ou 2 para conta poupança"));
+            switch (tipoConta) {
+                case 1:
+                    let saldo = Number(prompt("Digite o saldo: "));
+                    let numero = Number(prompt("Digite o numero da conta: "));
+                    let limite = Number(prompt("Digite seu limite: "));
+                    const contacorrente = new ContaCorrente(saldo, numero, limite);
+                    contacorrente.depositar();
+                    contacorrente.sacar();
+                    console.log(contacorrente.descrever());
+                    break;
+                case 2:
+                    saldo = Number(prompt("Digite o saldo: "));
+                    numero = Number(prompt("Digite o numero da conta: "));
+                    let juros = Number(prompt("Digite seu juros: "));
+                    const contaPoupanca = new ContaPoupanca(saldo, numero, juros);
+                    contaPoupanca.depositar();
+                    contaPoupanca.sacar();
+                    console.log(contacorrente.descrever());
+                    break;
+            }
+            break;
+        case 5:
+            let alunoNome = prompt("Digite seu nome: ");
+            let alunoIdade = Number(prompt("Digite sua idade: "));
+            const aluno = new Aluno(alunoNome, alunoIdade);
+            while (true) {
+                let selecao = Number(prompt("Digite 1 para adicionar nota, 2 para fazer a media das notas e 3 para imprimir o boletim"));
+                switch (selecao) {
+                    case 1:
+                        let nota = Number(prompt("Digite a nota: "))
+                        aluno.adicionarNota(nota);
+                        break;
+                    case 2:
+                        aluno.calcularMedia();
+                        break;
+                    case 3:
+                        aluno.imprimirBoletim();
+                        break;
+                }
+                if (selecao === 4) {
+                    break;
+                }
+            }
+        case 6:
+            const biblioteca = new Biblioteca();
+            let livroOpcao;
+            do {
+                livroOpcao = Number(prompt("Digite 1 para adicionar um novo livro, 2 para adicionar um livro à biblioteca, 3 para listar os livros da biblioteca, ou 4 para sair"));
+
+                switch (livroOpcao) {
+                    case 1:
+                        let livroTitulo = prompt("Digite o título do livro: ");
+                        let livroAutor = prompt("Digite o nome do autor: ");
+                        let livroAno = Number(prompt("Digite o ano: "));
+                        const novoLivro = new Livro(livroTitulo, livroAutor, livroAno);
+                        console.log(novoLivro.descrever());
+                        break;
+
+                    case 2:
+                        let livroTituloBiblioteca = prompt("Digite o título do livro: ");
+                        let livroAutorBiblioteca = prompt("Digite o nome do autor: ");
+                        let livroAnoBiblioteca = Number(prompt("Digite o ano: "));
+                        const livroParaBiblioteca = new Livro(livroTituloBiblioteca, livroAutorBiblioteca, livroAnoBiblioteca);
+                        biblioteca.adicionarLivro(livroParaBiblioteca);
+                        break;
+
+                    case 3:
+                        biblioteca.listarLivros();
+                        break;
+
+                    case 4:
+                        console.log("Programa encerrado.");
+                        break;
+
+                    default:
+                        console.log("Opção inválida.");
+                        break;
+                }
+            } while (livroOpcao !== 4);
+            break;
+        case 7:
+            let pedido = new Pedido();
+            let escolhaPedido;
+            do {
+                escolhaPedido = Number(prompt("Digite 1 para cadastrar um produto, 2 para remover um produto e 3 para finalizar o pedido"));
+                switch (escolhaPedido) {
+                    case 1:
+                        let nomeProduto = prompt("Digite o nome do produto: ");
+                        let precoProduto = Number(prompt("Digite o valor do produto: "));
+                        let quantidadeProduto = Number(prompt("Digite a quantidade do produto: "));
+                        const produto = new Produto(nomeProduto, precoProduto, quantidadeProduto);
+                        pedido.adicionarProduto(produto);
+                        break;
+                    case 2:
+                        pedido.removerProduto();
+                        break;
+                    case 3:
+                        pedido.calcularTotal();
+                        break;
+
+                }
+            } while (escolhaPedido != 4);
+            break;
+        case 8:
+            let empresa = new Empresa();
+            let escolhaEmpresa;
+            do {
+                escolhaEmpresa = Number(prompt("Digite 1 para adicionar um funcionario, 2 para remover um funcionario, 3 para listar os funcionarios e 4 para folha de pagamento"));
+                switch (escolhaEmpresa) {
+                    case 1:
+                        let nome = prompt("Digite o nome: ");
+                        let cargo = prompt("Digite o cargo");
+                        let salario = Number(prompt("Digite o salario: "));
+                        let funcionario = new Funcionario(nome, cargo, salario);
+                        empresa.adicionarFuncionario(funcionario);
+                        break;
+                    case 2:
+                        empresa.removerFuncionario();
+                        break;
+                    case 3:
+                        empresa.listarFuncionarios();
+                        break;
+                    case 4:
+                        empresa.calcularFolhaSalarial();
+                        break;
+                }
+
+            } while (escolhaEmpresa != 5);
+            break;
+        case 9:
+            let escolhaAnimal;
+            do {
+                escolhaAnimal = Number(prompt("Digite 1 para cadastrar um cachorro, 2 para um gato e 3 para um passaro"));
+                switch (escolhaAnimal) {
+                    case 1:
+                        let nomeCachorro = prompt("Digite o nome:");
+                        let idadeCachorro = prompt("Digite a idade");
+                        let cachorro = new Cachorro(nomeCachorro, idadeCachorro);
+                        cachorro.emitirSom();
+                        break;
+                    case 2:
+                        let nomeGato = prompt("Digite o nome: ");
+                        let idadeGato = prompt("Digite a idade: ");
+                        let gato = new Gato(nomeGato, idadeGato);
+                        gato.emitirSom();
+                    case 3:
+                        let nomePassaro = prompt("Digite o nome: ");
+                        let idadePassaro = prompt("Digite a idade: ");
+                        let passaro = new Passaro(nomePassaro, idadePassaro);
+                        passaro.emitirSom();
+                }
+            } while (escolhaAnimal != 4);
+            break;
+        case 10:
+            let escolhaCalculadora;
+            do {
+                let num1 = Number(prompt("Digite o primeiro numero: "));
+                let num2 = Number(prompt("Digite o segundo numero: "));
+                let calculadora = new Calculadora(num1, num2);
+                escolhaCalculadora = Number(prompt("Digite 1 para soma, 2 para subtração, 3 para multiplicação e 4 para divisão"));
+                switch (escolhaCalculadora) {
+                    case 1:
+                        calculadora.somar();
+                        break;
+                    case 2:
+                        calculadora.subtrair();
+                        break;
+                    case 3:
+                        calculadora.multiplicar();
+                        break;
+                    case 4:
+                        calculadora.dividir();
+                }
+            } while (escolhaCalculadora != 5);
+            break;
+    }
+
+</script>
+
+</html>
