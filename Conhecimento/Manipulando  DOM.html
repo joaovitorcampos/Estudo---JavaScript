@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum</title>
+</head>
+<body>
+    <img src="https://cdn-icons-png.flaticon.com/512/3176/3176151.png" alt="Profile" width="100">
+    <h1 id="person-name" class="tittle">João Vitor Campos Ribeiro</h1>
+    <h2>Programador Full Stack</h2>
+    <p>Conhecimento em JavaScript e programação FullStack</p>
+    <p><a href="https://github.com/joaovitorcampos">Meu Portifolio</a></p>
+    <script>
+        console.log(document);//visualiza o ducumento inteiro do codigo
+        console.log(document.body);//visualiza o body
+        var titleEl = document.getElementById("person-name");//mostra apenas a parte que possui o id
+        console.log("tittleEl", titleEl);
+        titleEl = document.getElementsByTagName("h1");//apenas o que possui a tag
+        console.log("tittleEl", titleEl);
+        titleEl = document.getElementsByClassName("tittle");//apenas o que possui a classe
+        console.log("tittleEl", titleEl);
+        console.log("*", document.querySelectorAll("*"));//seletor universal, retorna todos os elementos
+        console.log("*", document.querySelectorAll("p *"));//retorna todos os elementos p
+        console.log("id", document.querySelector("#person-name"));//retorna o primeiro elemento pela ID
+        console.log("tag", document.querySelectorAll("p"));//retorna pela tag
+        console.log("class", document.querySelectorAll(".tittle"));//retorna pela classe
+        console.log("attr", document.querySelectorAll("a[href]"));//retorna por atributo
+        console.log("attr", document.querySelectorAll("a[href='https://github.com/joaovitorcampos']"));
+    </script>
+</body>
+</html>
