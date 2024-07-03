@@ -1,10 +1,13 @@
 <html>
     <script>
-        const person = {
-            name: "joao",
-            age: 23,
+        class Person {
+            constructor() {
+                this.nome = "joao";
+                this.age = 23;
+            }
         }
-        const personStr = JSON.stringify(person);
+        const joao = new Person();
+        const personStr = JSON.stringify(joao);
         console.log(personStr);
         const personOBJ = JSON.parse(personStr);
         console.log(personOBJ);
