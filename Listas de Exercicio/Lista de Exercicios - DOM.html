@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <p id="questao-1"></p>
+    <p>-------------</p>
+    <p id="questao-2">Texto que vai ser colorido</p>
+    <button id="questao-2-Change-Color">Trocar cor</button>
+    <p>-------------</p>
+    <button id="questao-3-Button">Criar novo elemento</button>
+    <p>-------------</p>
+    <p id="questao-4">Texto</p>
+    <button id="questao-4-Button">Remover o elemento</button>
+    <p>-------------</p>
+    <p id="questao-5">Texto</p>
+    <button id="questao-5-Button">Visibilidade</button>
+    <p>-------------</p>
+    <img src="https://thumbs.dreamstime.com/b/imagem-de-fundo-bonita-do-c%C3%A9u-da-natureza-64743176.jpg" id="questao-6" alt="">
+    <button id="questao-6-Button">Modificando</button>
+    <p>-------------</p>
+    <ul id="questao-8-Lista">Lista</ul>
+    <button id="questao-8">Adicionar item</button>
+    <p>-------------</p>
+    <p id="questao-9-P1">Texto 1</p>
+    <p id="questao-9-P2">Texto 2</p>
+    <button id="questao-9-Button">Trocar</button>
+    <p>-------------</p>
+    <button id="questao-10-B1">Botão 1</button>
+    <button id="questao-10-B2">Botão 2</button>
+    <button id="questao-10-B3">Botão 3</button>
+    <button id="questao-10-B4">Botão 4</button>
+    <button id="questao-10-B5">Botão 5</button>
+    <script>
+        /*
+        1- Adicionar Texto a um Elemento 
+        Crie uma página HTML com um parágrafo vazio. Escreva um script que adicione o texto "Olá, Mundo!" a este parágrafo.
+        
+        2- Alterar o Estilo de um Elemento 
+        Crie uma página HTML com um botão e um parágrafo. Escreva um script que, ao clicar no botão, altere a cor do texto do parágrafo para vermelho.
+        
+        3- Criar e Inserir um Novo Elemento
+        Crie uma página HTML com um botão. Escreva um script que, ao clicar no botão, crie um novo elemento <div> com o texto "Novo elemento" e o adicione ao final do body.
+        
+        4- Remover um Elemento 
+        Crie uma página HTML com um botão e um parágrafo. Escreva um script que, ao clicar no botão, remova o parágrafo da página.
+        
+        5- Alternar a Visibilidade de um Elemento
+        Crie uma página HTML com um botão e um parágrafo. Escreva um script que, ao clicar no botão, alterne a visibilidade do parágrafo (exibir/ocultar).
+        
+        6- Modificar Atributos de um Elemento
+        Crie uma página HTML com uma imagem e um botão. Escreva um script que, ao clicar no botão, altere a fonte da imagem para outra imagem.
+        
+        7- Contar e Exibir o Número de Elementos
+        Crie uma página HTML com vários elementos de um tipo (por exemplo, <p>). Escreva um script que conte e exiba o número desses elementos em um parágrafo.
+        
+        8- Adicionar Itens a uma Lista    
+        Crie uma página HTML com uma lista não ordenada (<ul>) e um botão. Escreva um script que, ao clicar no botão, adicione um novo item à lista com o texto "Novo item".
+        
+        9- Trocar o Conteúdo de Dois Elementos
+        Crie uma página HTML com dois parágrafos e um botão. Escreva um script que, ao clicar no botão, troque o conteúdo dos dois parágrafos.
+        
+        10- Adicionar Eventos a Vários Elementos
+        Crie uma página HTML com cinco botões. Escreva um script que, ao clicar em qualquer um dos botões, exiba um alert com o texto "Botão X clicado", onde X é o número do botão (1, 2, 3, 4, 5).*/
+        const questao1P = document.querySelector("#questao-1");
+        questao1P.innerHTML = "Olá mundo!";
+        //Fim da questão 1
+        const questao2P = document.querySelector("#questao-2");
+        const questao2B = document.querySelector("#questao-2-Change-Color");
+        questao2B.addEventListener("click", () => {
+            questao2P.style.color = "red";
+        });
+        //Fim da questão 2
+        const questao3B = document.querySelector("#questao-3-Button");
+        questao3B.addEventListener("click", () => {
+            const newDiv = document.createElement("div");
+            newDiv.textContent = "Novo elemento"
+            document.body.appendChild(newDiv);
+        });
+        //Fim da questão 3 
+        const questao4P = document.querySelector("#questao-4");
+        const questao4B = document.querySelector("#questao-4-Button");
+        questao4B.addEventListener("click", () => {
+            questao4P.remove();
+        });
+        //Fim da questão 4
+        const questao5P = document.querySelector("#questao-5");
+        const questao5B = document.querySelector("#questao-5-Button");
+        questao5B.addEventListener("click", () => {
+            if (questao5P.style.visibility === 'hidden') {
+                questao5P.style.visibility = 'visible';
+            }
+            else {
+                questao5P.style.visibility ='hidden'
+            }
+        });
+        //Fim da questão 5
+        const questao6I = document.querySelector("#questao-6");
+        const questao6B = document.querySelector("#questao-6-Button");
+        questao6B.addEventListener("click", () => {
+            questao6I.src = "https://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_1280.jpg";
+        });
+        //Fim da questão 6
+        const questao7P = document.querySelectorAll("p");
+        const newP = document.createElement("p");
+        newP.textContent = `Existem ${questao7P.length} P`;
+        document.body.appendChild(newP);
+        //Fim da questão 7
+        const questao8B = document.querySelector("#questao-8");
+        const questao8L = document.querySelector("#questao-8-Lista");
+        questao8B.addEventListener("click", () => {
+            const novoItem = document.createElement("li");
+            novoItem.textContent = "Novo Item";
+            questao8L.appendChild(novoItem);
+        });
+        //Fim da questão 8
+        const questao9P1 = document.querySelector("#questao-9-P1");
+        const questao9P2 = document.querySelector("#questao-9-P2");
+        const questao9B = document.querySelector("#questao-9-Button");
+        questao9B.addEventListener("click", () => {
+            [questao9P1.textContent, questao9P2.textContent] = [questao9P2.textContent, questao9P1.textContent];
+        });
+        //Fim da questão 9
+        const questao10B1 = document.querySelector("#questao-10-B1");
+        const questao10B2 = document.querySelector("#questao-10-B2");
+        const questao10B3 = document.querySelector("#questao-10-B3");
+        const questao10B4 = document.querySelector("#questao-10-B4");
+        const questao10B5 = document.querySelector("#questao-10-B5");
+        questao10B1.addEventListener("click", () => {
+            alert("1");
+        });
+        questao10B2.addEventListener("click", () => {
+            alert("2");
+        });
+        questao10B3.addEventListener("click", () => {
+            alert("3");
+        });
+        questao10B4.addEventListener("click", () => {
+            alert("4");
+        });
+        questao10B5.addEventListener("click", () => {
+            alert("5");
+        });
+        //Fim da questão 10
+    </script>
+</body>
+
+</html>
