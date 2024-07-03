@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="q1">Questao 1</button>
+    <button id="q2">Questao 2</button>
+    <button id="q3">Questao 3</button>
+    <button id="q4">Questao 4</button>
+    <button id="q5">Questao 5</button>
+    <button id="q6">Questao 6</button>
+    <button id="q7">Questao 7</button>
+    <button id="q8">Questao 8</button>
+    <button id="q9">Questao 9</button>
+    <button id="q10">Questao 10</button>
+    <script>
+        /*Exercício 1: Criar uma Promise Simples
+        Crie uma Promise que resolve com o valor "Hello, World!" após 2 segundos e imprima o valor resolvido no console.
+        
+        Exercício 2: Rejeitar uma Promise
+        Crie uma Promise que rejeita com um erro "Algo deu errado!" após 3 segundos e trate a rejeição imprimindo a mensagem de erro no console.
+        
+        Exercício 3: Promise com Fetch
+        Use fetch para fazer uma requisição GET a uma API pública (por exemplo, JSONPlaceholder) e resolva a Promise para obter os dados da API e imprima-os no console.
+        
+        Exercício 4: Encadeamento de Promises
+        Crie uma cadeia de Promises que primeiro resolve com um valor inicial, depois passa esse valor para a próxima Promise que o modifica e assim por diante, até que a cadeia imprima o valor final no console.
+        
+        Exercício 5: Promise.all
+        Crie três Promises que resolvem em diferentes tempos e use Promise.all para esperar que todas sejam resolvidas. Imprima os resultados de todas as Promises no console.
+        
+        Exercício 6: Promise.race
+        Crie três Promises que resolvem em diferentes tempos e use Promise.race para obter o resultado da Promise que resolver primeiro. Imprima o resultado no console.
+        
+        Exercício 7: Função Async/Await Simples
+        Transforme uma função que retorna uma Promise para usar async/await. A função deve retornar "Dados carregados" após 2 segundos e imprimir o valor retornado.
+        
+        Exercício 8: Tratamento de Erros com Async/Await
+        Crie uma função assíncrona que simula uma operação que pode falhar. Use try/catch para tratar possíveis erros e imprima uma mensagem apropriada no console.
+        
+        Exercício 9: Chamada de API com Async/Await
+        Use fetch com async/await para fazer uma requisição a uma API pública e imprima os dados no console. Trate possíveis erros com try/catch.
+        
+        Exercício 10: Encadeamento de Funções Assíncronas
+        Crie duas funções assíncronas que dependem uma da outra. A primeira função deve esperar 2 segundos e retornar um valor, e a segunda função deve esperar o valor da primeira função para continuar a execução. Imprima os resultados no console.*/
+        const questao1B = document.querySelector("#q1");
+        function questao1() {
+            const q1 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            }).then(() => {
+                console.log("Hello World");
+            });
+        }
+        questao1B.addEventListener("click", questao1);
+        //Fim da questão 1
+        const questao2B = document.querySelector("#q2");
+        function questao2() {
+            const q2 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject();
+                }, 3000);
+            }).catch(() => {
+                console.error("Erro");
+            });
+        }
+        questao2B.addEventListener("click", questao2);
+        //Fim da questão 2
+        const questao3B = document.querySelector("#q3");
+        function questao3() {
+            fetch('https://jsonplaceholder.typicode.com/posts').then(response => {
+                if (!response.ok) {
+                    throw new Error("Error" + response.statusText);
+                }
+                return response.json();
+            }).then(data => {
+                console.log(data);
+            }).catch(error => {
+                console.error("Erro", error);
+            });
+        }
+        questao3B.addEventListener("click", questao3);
+        //Fim da questão 3
+        const questao4B = document.querySelector("#q4");
+        function questao4() {
+            let num = 0;
+            const q4 = new Promise((resolve, reject) => {
+                num++;
+                resolve(num);
+            }).then((num) => {
+                num++;
+                return num;
+            }).then((num) => {
+                num++;
+                return num;
+            }).then((num) => {
+                console.log(num);
+            })
+        }
+        questao4B.addEventListener("click", questao4);
+        //Fim da questão 4
+        const questao5B = document.querySelector("#q5");
+        function questao5() {
+            const promise1Questao5 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Promise 1");
+                }, 1000)
+            });
+            const promise2Questao5 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Promise 2");
+                }, 2000)
+            });
+            const promise3Questao5 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Promise 3");
+                }, 3000)
+            });
+            Promise.all([promise1Questao5, promise2Questao5, promise3Questao5]).then((values) => {
+                console.log(values);
+            })
+        }
+        questao5B.addEventListener("click", questao5);
+        //Fim da questão 5
+        const questao6B = document.querySelector("#q6");
+        function questao6() {
+            const promise1Questao6 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Promise 1")
+                }, 2000)
+            });
+            const promise2Questao6 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Promise 2")
+                }, 1000)
+            });
+            Promise.race([promise1Questao6, promise2Questao6]).then((value) => {
+                console.log(value);
+            });
+        }
+        questao6B.addEventListener("click", questao6);
+        // Fim da questão 6
+        const questao7B = document.querySelector("#q7");
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        async function questao7() {
+            console.log("inicio");
+            await delay(2000);
+            console.log("dados carregados");
+        }
+        questao7B.addEventListener("click", questao7);
+        //Fim da questão 7
+        const questao8B = document.querySelector("#q8");
+        async function questao8() {
+            try {
+                const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.log("Erro", error);
+            }
+        }
+        questao8B.addEventListener("click", questao8);
+        //Fim da questão 8
+        const questao9B = document.querySelector("#q9");
+        function operacao() {
+            return new Promise((resolve, reject) => {
+                const num = Math.random() > 0.5;
+                setTimeout(() => {
+                    if (num) {
+                        resolve("Sucesso");
+                    } else {
+                        reject("Falhou");
+                    }
+                }, 2000);
+            })
+        }
+        async function questao9() {
+            try {
+                const resultado = await operacao();
+                console.log(resultado);
+            } catch (error) {
+                console.log("erro:", error);
+            }
+        }
+        questao9B.addEventListener("click", questao9);
+        //Fim da questão 9
+        const questao10B = document.querySelector("#q10");
+        async function questao10() {
+            return new Promise((resolve)=> {
+                setTimeout(()=> {
+                    resolve(3);
+                },2000);
+            })
+        }
+        async function questao10func2() {
+            try {
+                const value = await questao10();
+                console.log(`Primeira função retornou: ${value}`);
+                const value2 = 5+value;
+                console.log(`Segunda função retornou: ${value2}`);
+            } catch (error) {
+                console.error("erro", error);
+            }
+        }
+        questao10B.addEventListener("click", questao10func2);
+    </script>
+</body>
+</html>
