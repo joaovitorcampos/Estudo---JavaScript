@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="executarPromise">Executar</button>
+    <script>
+        function testPromise () {
+            console.log("start");
+            const p1 = new Promise ((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("p1 finish");
+                    resolve(1);
+                }, 1000);
+            });
+            const p2 = new Promise ((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("p2 finish");
+                    resolve(2);
+                }, 2000);
+            });
+            const p3 = new Promise ((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("p3 finish");
+                    resolve(3);
+                }, 3000);
+            });
+            Promise.all([p1, p2, p3]).then((values)=> {
+                console.log("promises values", values);
+            }).catch(()=> {
+                console.error("promises error");
+            });
+        }
+        const buttonEl = document.querySelector("#executarPromise");
+        buttonEl.addEventListener("click", testPromise);
+    </script>
+</body>
+</html>
